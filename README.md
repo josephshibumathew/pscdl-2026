@@ -17,16 +17,18 @@
 
 <br>
 
-## 🧠 Key Innovation: Circular Buffer Architecture
-Storing the last 90 seconds of frames naively takes **746 MB**. Storing the whole video takes **3.4 GB**. 
-This pipeline implements a **circular buffer (uint8)** that updates in **O(1) time** and uses a constant **186 MB** of memory, independent of video length.
-
-<br>
-
 ## 📝 Problem Statement
+The objective is to detect objects that are newly introduced into a fixed-camera surveillance scene and remain there for an extended period. For example, a suspicious bag left unattended, a vehicle parked in a restricted area, or a roadblock placed on the road. Temporary movements such as pedestrians, passing vehicles, or shadows should be ignored. The system generates binary masks highlighting only these persistent objects.
 - **Task**: Generate a binary mask per second (White = persistent object, Black = background).
 - **p/c Rule**: Object must exist for `p=60s` before flagging. Flag for `(c-p)=30s`, then stop (`c=90s`).
 - **Challenge**: Reject transient objects (pedestrians, shadows) while handling occlusions.
+
+
+<br>
+
+## 🧠 Key Innovation: Circular Buffer Architecture
+Storing the last 90 seconds of frames naively takes **746 MB**. Storing the whole video takes **3.4 GB**. 
+This pipeline implements a **circular buffer (uint8)** that updates in **O(1) time** and uses a constant **186 MB** of memory, independent of video length.
 
 <br>
 
@@ -76,15 +78,15 @@ text
 
 1. Background Modeling
 
-Uses Median of the first 8–15 seconds (grayscale). Robust to pedestrian outliers (Mean would create "ghosts").
+Uses Median of the first 8–15 seconds (grayscale). Median is robust to pedestrian outliers (Mean would create "ghosts").
 Adaptive duration: min(15, max(8, 10% of duration)).
 2. ROI & Noise Masking
 
-Excludes top 20% (sky/trees) and bottom timestamp.
-Auto Noise Detection: Pixels noisy in >50% of clean frames are permanently masked out (structural noise).
+Excludes top 20% (sky/trees) and the timestamp present in the video.
+Auto Noise Detection: Pixels which are noisy more than 50% of the time in clean frames are permanently masked out (structural noise).
 3. Frame Differencing
 
-Samples one frame per second (midpoint). Threshold = 25 (empirically tuned).
+Samples one frame per second (midpoint). Threshold = 25 
 Morphological cleanup: MORPH_OPEN (removes noise) → MORPH_CLOSE (fills holes).
 4. Persistence Logic (The Core)
 
