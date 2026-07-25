@@ -2,7 +2,6 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.5+-green)
-![Competition](https://img.shields.io/badge/PSCDL-2026-1st_Place-gold)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97-Live%20Demo-yellow)](https://huggingface.co/spaces/Josephsmathew/pscdl-2026-demo)
 > **A classical computer vision pipeline for detecting left-behind objects in fixed-camera surveillance video.**
