@@ -5,7 +5,6 @@
 ![Competition](https://img.shields.io/badge/PSCDL-2026-1st_Place-gold)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 [![CI / Tests](https://github.com/josephshibumathew/pscdl-2026-solution/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/pscdl-2026-solution/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/your-username/pscdl-2026-solution/branch/main/graph/badge.svg)](https://codecov.io/gh/your-username/pscdl-2026-solution)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97-Live%20Demo-yellow)](https://huggingface.co/spaces/Josephsmathew/pscdl-2026-demo)
 > **A classical computer vision pipeline for detecting left-behind objects in fixed-camera surveillance video.**
 
@@ -14,7 +13,7 @@
 ## 📈 Competition Results (Blind Test Set)
 | Metric | Rank | Score |
 |--------|------|-------|
-| 🥇 **Overall Winner** | **1st** | - |
+| 🥇 **Overall Winner** | **1st** | 0.4 on Blind Test |
 | 🥇 **F1 Score** | **1st** | **0.40** |
 | 🥉 **Inference Time** | **3rd** | Optimized |
 
